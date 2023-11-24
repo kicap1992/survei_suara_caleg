@@ -22,9 +22,9 @@ class LogSuaraViewModel extends CustomBaseViewModel {
     try {
       var response = await httpService.get('caleg/suara/$idCaleg');
       MyResponseModel myResponseModel = MyResponseModel.fromJson(response.data);
-      PemilihDetailModel pemilihDetailModel =
-          PemilihDetailModel.fromJson(myResponseModel.data);
-      listPemilih = pemilihDetailModel.pemilihModel!;
+      PemilihDetail pemilihDetail =
+          PemilihDetail.fromJson(myResponseModel.data);
+      listPemilih = pemilihDetail.pemilihModel!;
       counter = listPemilih.length;
 
       status = true;

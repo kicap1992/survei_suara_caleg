@@ -7,7 +7,7 @@ import '../../../../model/my_response.model.dart';
 class AreaTpsViewModel extends CustomBaseViewModel {
   final log = getLogger('AreaTpsViewModel');
 
-  List<AreaModel> listAreaModel = [];
+  List<KecamatanModel> listKecamatanModel = [];
   int jumlahArea = 0;
   bool status = false;
 
@@ -23,12 +23,14 @@ class AreaTpsViewModel extends CustomBaseViewModel {
     try {
       var response = await httpService.get('/area/cek_area_caleg/$idCaleg');
       MyResponseModel myResponseModel = MyResponseModel.fromJson(response.data);
-      AreaListModel areaListModel =
-          AreaListModel.fromJson(myResponseModel.data);
-      listAreaModel = areaListModel.area ?? [];
-      log.i('listAreaModel: $listAreaModel');
-      jumlahArea = listAreaModel.length;
-      log.i('jumlahArea: $jumlahArea');
+      // log.i('myResponseModel: ${myResponseModel.data}');
+      KecamatanDetail kecamatanDetail =
+          KecamatanDetail.fromJson(myResponseModel.data);
+      // log.i('kecamatanDetail: ${kecamatanDetail.kecamatan}');
+      listKecamatanModel = kecamatanDetail.kecamatan ?? [];
+
+      jumlahArea = kecamatanDetail.jumlah!;
+      // log.i('jumlahArea: $jumlahArea');
       status = true;
     } catch (e) {
       log.e(e.toString());
@@ -38,13 +40,13 @@ class AreaTpsViewModel extends CustomBaseViewModel {
     }
   }
 
-  cekSuara(AreaModel areaModel) async {
+  cekSuara(KecamatanModel kecamatanModel) async {
     await bottomSheetService.showCustomSheet(
-      data: areaModel.idArea,
+      data: kecamatanModel.kecamatanId,
       barrierDismissible: true,
       isScrollControlled: true,
-      title: 'Detail Suara Area ${areaModel.namaArea}',
-      description: 'Tim Survei',
+      title: 'Detail Suara Kecamatan ${kecamatanModel.name}',
+      description: 'Kecamatan',
       ignoreSafeArea: false,
       variant: BottomSheetType.detailSuaraBottomSheetView,
     );

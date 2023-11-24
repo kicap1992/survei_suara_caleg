@@ -29,11 +29,11 @@ class DetailSuaraBottomSheetViewModel extends CustomBaseViewModel {
 
       var response = await httpService.get(url);
       MyResponseModel myResponseModel = MyResponseModel.fromJson(response.data);
-      PemilihDetailModel pemilihDetailModel =
-          PemilihDetailModel.fromJson(myResponseModel.data);
+      PemilihDetail pemilihDetail =
+          PemilihDetail.fromJson(myResponseModel.data);
 
-      listPemilih = pemilihDetailModel.pemilihModel!;
-      counter = pemilihDetailModel.jumlah!;
+      listPemilih = pemilihDetail.pemilihModel!;
+      counter = pemilihDetail.jumlah!;
       this.status = true;
     } catch (e) {
       this.status = false;

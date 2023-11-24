@@ -25,15 +25,21 @@ class LoginScreenViewModel extends CustomBaseViewModel {
     globalVar.backPressed = 'cantBack';
 
     try {
+      // log.i('username: ${usernameController.text}');
+      // log.i('password: ${passwordController.text}');
       var formData = FormData.fromMap({
         'username': usernameController.text,
         'password': passwordController.text,
       });
+      // log.i('formData: $formData');
       var response =
           await httpService.postWithFormData('login/caleg', formData);
 
+      // log.i('response: ${response.data}');
+
       MyResponseModel myResponseModel = MyResponseModel.fromJson(response.data);
       var data = myResponseModel.data;
+      // log.i('data: $data');
       CalegModel calegModel = CalegModel.fromJson(data);
       // log.i('calegModel: ${calegModel.toJson()}');
       await mySharedPrefs.setString('id', calegModel.idCaleg!.toString());

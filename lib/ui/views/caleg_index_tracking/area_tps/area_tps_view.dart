@@ -47,7 +47,7 @@ class AreaTpsView extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            "Jumlah Area TPS : ",
+                            "Jumlah Kecamatan : ",
                             style: italicTextStyle.copyWith(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class AreaTpsView extends StatelessWidget {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              '${model.jumlahArea} TPS',
+                              '${model.jumlahArea} Kecamatan',
                               style: boldTextStyle.copyWith(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class AreaTpsView extends StatelessWidget {
                                             child: ListTile(
                                               leading: Text('${i + 1}'),
                                               title: Text(
-                                                  '${model.listAreaModel[i].namaArea}'),
+                                                  '${model.listKecamatanModel[i].name}'),
                                               trailing: IconButton(
                                                 // trash bin icon
                                                 icon: const Icon(
@@ -118,8 +118,8 @@ class AreaTpsView extends StatelessWidget {
                                                   color: mainColor,
                                                 ),
                                                 onPressed: () {
-                                                  model.cekSuara(
-                                                      model.listAreaModel[i]);
+                                                  model.cekSuara(model
+                                                      .listKecamatanModel[i]);
                                                 },
                                               ),
                                             ),

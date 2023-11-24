@@ -46,12 +46,12 @@ class PengaturanCalegView extends StatelessWidget {
                         background: warningColor,
                       ),
                       const SizedBox(height: 10),
-                      TopContainer(
-                        title: 'Area\nTPS',
-                        value: '${model.suaraCounter} TPS',
-                        icon: Icons.location_on_outlined,
-                        background: orangeColor,
-                      ),
+                      // TopContainer(
+                      //   title: 'Area\nTPS',
+                      //   value: '${model.suaraCounter} TPS',
+                      //   icon: Icons.location_on_outlined,
+                      //   background: orangeColor,
+                      // ),
                       const SizedBox(height: 10),
                       TopContainer(
                         title: 'Jumlah Tim Survei',
