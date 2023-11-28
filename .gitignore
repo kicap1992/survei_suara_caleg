@@ -51,5 +51,7 @@ app.*.map.json
 /linux
 /windows
 
+.env
+
 
 
